@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Voir utilisateurs
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mt-5">
+
+		<div class="row">
+			{% include "public/shared/_messages_flash.html.twig" %}
+		</div>
+
+		<div class="col-12">
+			<a href="{{ path('admin/admin_home') }}" class="btn btn-primary mb-4">Retour au menu administrateur</a>
+			<h3>Liste des Utilisateurs</h3>
+
+
+			<div class="card-body">
+				{% if users | length > 0 %}
+					{{ knp_pagination_render(users) }}
+					<div class="table-responsive-sm">
+
+						<table class="table table-hover">
+
+							<thead>
+								<th>nom</th>
+								<th>prenom</th>
+								<th>Son adresse mail</th>
+								<th>Son role</th>
+								<th>Changer Role</th>
+								<th>Supprimer (utilisateur)
+								</th>
+
+							</thead>
+							<tbody>
+								{% for user in users %}
+									<tr>
+										<td>{{ user.nom }}</td>
+										<td>{{ user.prenom }}</td>
+										<td>{{ user.email }}</td>
+										<td>{{ user.roles[0] }}</td>
+										<td>
+											<a href="{{ path('admin_change_role',{'id': user.id}) }}" class="btn btn-danger">changer Role</td>
+										</td>
+
+										<td>
+											<a href="{{ path('admin_delete_user',{'id': user.id}) }}" class="btn btn-danger">Supprimer</td>
+										</td>
+									</tr>
+								</td>
+							{% endfor %}
+						</tbody>
+
+
+					</table>
+					{{ knp_pagination_render(users) }}
+				</div>
+
+
+			{% else %}
+				<p>Aucun User inscrit!</p>
+			{% endif %}
+
+
+		</div>
+	</div>
+</div></div></body>{% endblock %}

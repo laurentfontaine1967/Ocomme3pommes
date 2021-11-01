@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Menu Administrateur
+{% endblock %}
+
+{% block body %}
+
+	<div class="container mt-4" style="width=65%">
+
+
+		<div class="card m-4">
+			<div class="card-body">
+				<h5 class="card-title">Gestion des Utilisateurs</h5>
+				<p class="card-text">Permet de supprimer les utilisateurs ( parents qui n'ont plus d'enfants à la creche) et d'attribuer un role administrateur à un utilisateur</p>
+				<a href="{{ path('admin_user') }}" class="btn btn-primary">Gérer</a>
+			</div>
+		</div>
+
+
+		<div class="card m-4">
+			<div class="card-body">
+				<h5 class="card-title">Publier des évènements</h5>
+				<p class="card-text">Autorise uniquement les parents inscrits a voir les activités réalisées par les enfants ( photos....)</p>
+				<a href="{{ path('annonces_index') }}" class="btn btn-primary">Mettre à jour</a>
+			</div>
+		</div>
+
+
+	</div>
+
+
+{% endblock %}

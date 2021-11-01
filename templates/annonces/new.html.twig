@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Annonces
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-3">
+		<h5>Ajouter un nouvel évènement</h5>
+
+		{{ include('annonces/_form.html.twig') }}
+
+		<a href="{{ path('annonces_index') }}" class="btn btn-primary">Retour à la liste d'évènements</a>
+	</div>
+{% endblock %}

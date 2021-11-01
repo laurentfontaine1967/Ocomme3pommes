@@ -1,0 +1,62 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+	<div class="container-fluid">
+		<img id="logopomme" src="{{asset('images/logo.jpg') }}" alt="logo">
+
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarColor01">
+			<ul class="navbar-nav me-auto">
+
+				{% if app.user %}
+					<li class="nav-item">
+						<a class="nav-link">bonjour
+							{{app.user.prenom}}</a>
+					</li>
+
+
+				{% endif %}
+
+				<li class="nav-item">
+					<a class="nav-link" href="{{ path('home') }}">Acceuil</a>
+				</li>
+				{# <li class="nav-item">
+													<a class="nav-link" href="{{ path('prestations') }}">Nos prestations</a>
+												</li> #}
+
+				{% if app.user is same as null %}
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_login') }}">Mon compte</a>
+					</li>
+
+				{% endif %}
+
+				{% if app.user %}
+
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('app_logout') }}">Se deconnecter</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('mes-informations') }}">Mes info</a>
+					</li>
+
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('annonces_index') }}">Activités des enfants</a>
+					</li>
+
+					{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('admin/admin_home') }}">Admin-home</a>
+						</li>
+					{% endif %}
+				{% endif %}
+			</ul>
+			<form class="d-flex">
+				<input class="form-control me-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+			</form>
+		</div>
+	</div>
+</nav>

@@ -1,0 +1,18 @@
+.body {
+  height: 100 wh;
+  width: 100 vw;
+}
+
+.container.mt-3 {
+  background: url("/..//images/logo1.jpg") no-repeat center/cover;
+}
+
+.plaque {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.horaire {
+  margin-right: 60px;
+}

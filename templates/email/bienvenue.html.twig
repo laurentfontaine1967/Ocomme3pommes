@@ -1,0 +1,47 @@
+{% apply inline_css %}
+<style>
+	{
+		# here, define your CSS styles as usual #
+	}
+
+	.divText {
+		text-align: center;
+	}
+	li {
+		text-decoration: none;
+	}
+</style>
+
+
+{% endapply %}
+<div class="divText">
+	<h6>
+		Bonjour
+		{{ user.nom }},
+		{{ user.prenom }},
+
+	</h6>
+	<p style:font-size="20px">
+		Bienvue sur le site O comme 3 pommes</p>
+
+	<p>Merci pour votre inscription</p>
+	<p>
+		Vous pourrez suivre :</p>
+	<ul>
+		<li>Nos ateliers</li>
+		<li>Nos activités</li>
+
+	</ul>
+
+
+	<p>En vous inscrivant, vous  vous engagez à respecter les règles.</p>
+	<p>Le nom respect de ces règles sera sanctionné par la suppression de vos post et de votre compte.</p>
+
+
+	<p>Nous sommes ravis de vous acceuillir
+	</p>
+
+	<p>L'équipe
+	</p>
+
+</div>
