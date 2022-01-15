@@ -4,14 +4,19 @@
   height: 100px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   align-items: center;
   /* position: fixed; */
-  bottom: 0;
+  text-align: center;
+
+  /* bottom: 0; */
 }
 
 footer a {
   text-decoration: none;
   padding: 30px;
   color: black;
+}
+a {
+  font-size: 15px;
 }

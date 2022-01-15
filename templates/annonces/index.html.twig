@@ -4,43 +4,44 @@
 {% endblock %}
 
 {% block body %}
-
-	<div class="container mt-3">
-		<h5>Evènements</h5>
-		<table class="table">
-			<thead>
-				<tr>
-					<th>Title</th>
-					<th>Content</th>
-					<th>actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				{% for annonce in annonces %}
+	<body style="height:95vh">
+		<div class="container mt-3" style="height:85%">
+			<h5>Evènements</h5>
+			<table class="table">
+				<thead>
 					<tr>
-						<td>{{ annonce.title }}</td>
-						<td>{{ annonce.content }}</td>
-						<td>
-							<a href="{{ path('annonces_show', {'id': annonce.id}) }}" class="btn btn-primary">Détail</a>
-							{% if is_granted('ROLE_ADMIN') %}
-
-								<a href="{{ path('annonces_edit', {'id': annonce.id}) }}" class="btn btn-primary">Modifier</a>
-								{{ include('annonces/_delete_form.html.twig') }}
-
-
-							{% endif %}
-						</td>
+						<th>Title</th>
+						<th>Content</th>
+						<th>actions</th>
 					</tr>
-				{% else %}
-					<tr>
-						<td colspan="4">Aucun évènement enregistré</td>
-					</tr>
-				{% endfor %}
-			</tbody>
-		</table>
-		{% if is_granted('ROLE_ADMIN') %}
-			<a href="{{ path('annonces_new') }}" class="btn btn-primary">Ajouter un nouvel évènement</a>
+				</thead>
+				<tbody>
+					{% for annonce in annonces %}
+						<tr>
+							<td>{{ annonce.title }}</td>
+							<td>{{ annonce.content }}</td>
+							<td>
+								<a href="{{ path('annonces_show', {'id': annonce.id}) }}" class="btn btn-primary">Détail</a>
+								{% if is_granted('ROLE_ADMIN') %}
 
-		{% endif %}
-	</div>
+									<a href="{{ path('annonces_edit', {'id': annonce.id}) }}" class="btn btn-primary">Modifier</a>
+									{{ include('annonces/_delete_form.html.twig') }}
+
+
+								{% endif %}
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="4">Aucun évènement enregistré</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			{% if is_granted('ROLE_ADMIN') %}
+				<a href="{{ path('annonces_new') }}" class="btn btn-primary">Ajouter un nouvel évènement</a>
+
+			{% endif %}
+		</div>
+	</body>
 {% endblock %}

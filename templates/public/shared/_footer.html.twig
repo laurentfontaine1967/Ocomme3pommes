@@ -1,22 +1,28 @@
 <footer>
 	<div class="footer">
-		<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
+		<div class="container">
+			<link rel="stylesheet" href="{{ asset('css/footer.css') }}">
 
 
-		<a href="{{ path('cgu') }}">Mentions légales</a>
+			<a href="{{ path('cgu') }}">
+				<i class="fas fa-balance-scale"></i>
+			</a>
 
 
-		<a href="">
-			<i class="far fa-copyright"></i>Laurent FONTAINE</a>
+			<a href="">
+				<i class="far fa-copyright"></i>LF</a>
 
 
-		<a href="{{ path('contact') }}">Nous contacter</a>
-		<a href="https://m.facebook.com/MAM-%C3%B4-comme-3-pommes-640794746541394/?tsid=0.5041749022662267&source=result">Suivez-nous<i class="fab fa-facebook"></i>
-		</a>
+			<a href="{{ path('contact') }}">
+				<i class="fas fa-envelope"></i>
+			</a>
+			<a href="https://m.facebook.com/MAM-%C3%B4-comme-3-pommes-640794746541394/?tsid=0.5041749022662267&source=result">
+				<i class="fab fa-facebook"></i>
+			</a>
 
 
-		<img src="{{ asset('images/plaque.jpg') }}" style="max-width:8%" alt="agrement">
-
+			<img src="{{ asset('images/plaque.jpg') }}" style="max-width:8%" alt="agrement">
+		</div>
 	</div>
 
 
