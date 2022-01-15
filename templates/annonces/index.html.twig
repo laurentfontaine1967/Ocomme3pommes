@@ -5,8 +5,18 @@
 
 {% block body %}
 	<body style="height:95vh">
-		<div class="container mt-3" style="height:85%">
+		<div class="container mt-3" style="height:90%">
 			<h5>Evènements</h5>
+
+			{% if app.user %}
+
+				{% if app.user.roles[0] is same as "ROLE_ADMIN" %}
+					<a href="{{ path('admin/admin_home') }}" class="btn btn-primary btn-sm mb-4">Retour au menu administrateur</a>
+
+				{% endif %}
+			{% endif %}
+
+
 			<table class="table">
 				<thead>
 					<tr>
@@ -24,7 +34,7 @@
 								<a href="{{ path('annonces_show', {'id': annonce.id}) }}" class="btn btn-primary">Détail</a>
 								{% if is_granted('ROLE_ADMIN') %}
 
-									<a href="{{ path('annonces_edit', {'id': annonce.id}) }}" class="btn btn-primary">Modifier</a>
+									<a href="{{ path('annonces_edit', {'id': annonce.id}) }}" class="btn btn-primary mt-1">Modifier</a>
 									{{ include('annonces/_delete_form.html.twig') }}
 
 

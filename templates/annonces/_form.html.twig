@@ -2,21 +2,23 @@
 {{ form_widget(form) }}
 
 {% if app.request.attributes.get('_route') == 'annonces_edit' %}
-	<h2>Images</h2>
+	<h3>Images</h3>
+	<div class="container m-3">
+		<div style="display:flex;flex-wrap:wrap;justify-content:space-between">
+			{% for image in annonce.images %}
 
-	{% for image in annonce.images %}
+				<img class="mb-2" src="{{ asset('/uploads/' ~ image.name)}}" alt="image" width="300">
 
-		<div class="container m-3 ">
-			<img
-			src="{{ asset('/uploads/' ~ image.name)}}" alt="image" width="300">
-			{# <a class="btn btn-danger" href="{{ path('annonces_delete_image',{ id: image.id}) }}" data-delete data-token="{{csrf_token('delete' ~ image.id ) }}">Supprimer</a> #}
-			<a class="btn btn-danger" href="{{ path('annonces_delete_image',{ id: image.id}) }}">Supprimer</a>
+				<div
+					class="mt-1">
+					{# <a class="btn btn-danger" href="{{ path('annonces_delete_image',{ id: image.id}) }}" data-delete data-token="{{csrf_token('delete' ~ image.id ) }}">Supprimer</a> #}
+					<a class="btn btn-danger mb-1" href="{{ path('annonces_delete_image',{ id: image.id}) }}">Supprimer</a>
+				</div>
+
+
+			{% endfor %}
 		</div>
-
-	{% endfor %}
-
-
-{% endif %}
-
-<button class="btn btn-outline-primary mb-5">{{ button_label|default('Save') }}</button>
-{{ form_end(form) }}
+	{% endif %}
+	<button class="btn btn-outline-primary mt-4">{{ button_label|default('Save') }}</button>
+	{{ form_end(form) }}
+</div>

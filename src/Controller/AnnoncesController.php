@@ -115,7 +115,7 @@ class AnnoncesController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="annonces_delete", methods={"DELETE"})
+     * @Route("/{id}", name="annonces_delete", methods={"POST"})
      */
     public function delete(Request $request, Annonces $annonce): Response
     {

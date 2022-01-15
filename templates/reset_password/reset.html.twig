@@ -4,13 +4,16 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container p-5 mt-5" style="width:50%">
-		<h5>Réinitialiser/changer son mot de passe
-		</h5>
+	<body style="height:95vh">
 
-		{{ form_start(resetForm) }}
-		{{ form_row(resetForm.plainPassword) }}
-		<button class="btn btn-primary">changer / Reinitialiser</button>
-		{{ form_end(resetForm) }}
-	</div>
+		<div class="container p-5 mt-5" style="height:80%">
+			<h5>Réinitialiser/changer son mot de passe
+			</h5>
+
+			{{ form_start(resetForm) }}
+			{{ form_row(resetForm.plainPassword) }}
+			<button class="btn btn-primary">changer / Reinitialiser</button>
+			{{ form_end(resetForm) }}
+		</div>
+	</body>
 {% endblock %}

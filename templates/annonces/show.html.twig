@@ -5,38 +5,39 @@
 
 {% block body %}
 	<link rel="stylesheet" href="{{ asset('css/imageshow.css') }}">
+	<body style="height:95vh">
+		<div class="container mt-3" style="height:80%">
+			<h5>Détails de l'évènement</h5>
 
-	<div class="container mt-3">
-		<h5>Détails de l'évènement</h5>
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Title</th>
+						<td>{{ annonce.title }}</td>
+					</tr>
+					<tr>
+						<th>Content</th>
+						<td>{{ annonce.content }}</td>
+					</tr>
+				</tbody>
+			</table>
+			{# VOIR IMAGES #}
+			<div class="imageshow">
+				{% for image in annonce.images %}
 
-		<table class="table">
-			<tbody>
-				<tr>
-					<th>Title</th>
-					<td>{{ annonce.title }}</td>
-				</tr>
-				<tr>
-					<th>Content</th>
-					<td>{{ annonce.content }}</td>
-				</tr>
-			</tbody>
-		</table>
-		{# VOIR IMAGES #}
-		<div class="imageshow">
-			{% for image in annonce.images %}
+					<img class="p-2" src="{{ asset('/uploads/' ~ image.name)}}" alt="image" width="300">
 
-				<img class="p-2" src="{{ asset('/uploads/' ~ image.name)}}" alt="image" width="400">
+				{% endfor %}
+			</div>
+			{# FIN VOIR IMAGES #}
 
-			{% endfor %}
+
+			<a href="{{ path('annonces_index') }}" class="btn btn-primary">retour à la liste</a>
+			{% if is_granted('ROLE_ADMIN') %}
+				<a href="{{ path('annonces_edit', {'id': annonce.id}) }}" class="btn btn-primary">Modifier</a>
+
+				{{ include('annonces/_delete_form.html.twig') }}
+			{% endif %}
 		</div>
-		{# FIN VOIR IMAGES #}
-
-
-		<a href="{{ path('annonces_index') }}" class="btn btn-primary">retour à la liste</a>
-		{% if is_granted('ROLE_ADMIN') %}
-			<a href="{{ path('annonces_edit', {'id': annonce.id}) }}" class="btn btn-primary">Modifier</a>
-
-			{{ include('annonces/_delete_form.html.twig') }}
-		{% endif %}
-	</div>
+	</body>
 {% endblock %}

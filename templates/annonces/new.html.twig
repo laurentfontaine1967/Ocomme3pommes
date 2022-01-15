@@ -4,11 +4,13 @@
 {% endblock %}
 
 {% block body %}
-	<div class="container mt-3">
-		<h5>Ajouter un nouvel évènement</h5>
+	<body style="height:95vh">
+		<div class="container mt-3" style="height:85%">
+			<h5>Ajouter un nouvel évènement</h5>
 
-		{{ include('annonces/_form.html.twig') }}
+			{{ include('annonces/_form.html.twig') }}
 
-		<a href="{{ path('annonces_index') }}" class="btn btn-primary">Retour à la liste d'évènements</a>
-	</div>
+			<a href="{{ path('annonces_index') }}" class="btn btn-primary">Retour à la liste d'évènements</a>
+		</div>
+	</body>
 {% endblock %}
