@@ -6,9 +6,9 @@
 {% block body %}
 	<body style="height:95vh">
 		<div class="container mt-5" style="height:80%">
-
-			{% include "public/shared/_messages_flash.html.twig" %}
-
+			<div>
+				{% include "public/shared/_messages_flash.html.twig" %}
+			</div>
 			<a href="{{ path('admin/admin_home') }}" class="btn btn-primary btn-sm mb-4">Retour au menu administrateur</a>
 			<h3>Liste des Utilisateurs</h3>
 			{# {{ knp_pagination_render(users) }} #}

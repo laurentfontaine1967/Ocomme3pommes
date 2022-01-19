@@ -23,7 +23,7 @@ class AdminChangeRoleController extends AbstractController
 
         if(!$user)
         {
-            return $this->redirectToRoute('home');
+            return $this -> redirectToRoute('home');
         }
 
     
@@ -39,7 +39,7 @@ class AdminChangeRoleController extends AbstractController
         $user->setRoles([]);
         $em->flush();
         $this->addFlash('success', 'Le role a été changé avec succès');
-        return $this->redirectToRoute('admin/admin_home');
+        return $this->redirectToRoute('admin_user');
 
         }
         else {
@@ -47,7 +47,8 @@ class AdminChangeRoleController extends AbstractController
         $user->setRoles(["ROLE_ADMIN"]);
          $em->flush();
          $this->addFlash('success', 'Le role a été changé avec succès');
-         return $this->redirectToRoute('admin/admin_home');
+         
+         return $this->redirectToRoute('admin_user');
         }
       
     
