@@ -4,28 +4,27 @@
 {% endblock %}
 
 {% block body %}
-	<link rel="stylesheet" href="{{ asset('css/register.css') }}">
+	<body style="height:90vh">
 
-	<div class="container mt-4mb-4" style="width: 70%">
-		{% include "public/shared/_messages_flash.html.twig" %}
-	</div>
+		<div class="container p-5" style="width:95%">
 
-	<div class="container mt-4 mb-4" style="width: 70%" ;>
+			{% include "public/shared/_messages_flash.html.twig" %}
 
 
-		<h4>S'enregistrer sur le site
-		</h4>
+			<h4>S'enregistrer sur le site
+			</h4>
 
-		{{ form_start(registrationForm) }}
-		{{ form_row(registrationForm.nom) }}
-		{{ form_row(registrationForm.prenom) }}
-		{{ form_row(registrationForm.email) }}
-		{{ form_row(registrationForm.plainPassword, {
+			{{ form_start(registrationForm) }}
+			{{ form_row(registrationForm.nom) }}
+			{{ form_row(registrationForm.prenom) }}
+			{{ form_row(registrationForm.email) }}
+			{{ form_row(registrationForm.plainPassword, {
             label: 'Mot de passe'
         }) }}
-		{{ form_row(registrationForm.agreeTerms) }}
+			{{ form_row(registrationForm.agreeTerms) }}
 
-		<button type="submit" class="btn btn-outline-primary mb-15">Valider</button>
-		{{ form_end(registrationForm) }}
-	</div>
+			<button type="submit" class="btn btn-outline-primary mb-1">Valider</button>
+			{{ form_end(registrationForm) }}
+		</div>
+	</body>
 {% endblock %}

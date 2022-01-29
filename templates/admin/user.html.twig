@@ -5,58 +5,61 @@
 
 {% block body %}
 	<body style="height:95vh">
-		<div class="container mt-5" style="height:80%">
+		<div class="container mt-5" style="height:100%;background-color:grey">
+
 			<div>
 				{% include "public/shared/_messages_flash.html.twig" %}
 			</div>
 			<a href="{{ path('admin/admin_home') }}" class="btn btn-primary btn-sm mb-4">Retour au menu administrateur</a>
 			<h3>Liste des Utilisateurs</h3>
-			{# {{ knp_pagination_render(users) }} #}
+
 
 			{% if users | length > 0 %}
 
+				{{ knp_pagination_render(users) }}
+				<div style="height:80%;background-color:yellow;display:flex;flex-wrap:wrap;justify-content:space-between">
+					{% for user in users %}
 
-				{% for user in users %}
-					<div class="card-body  mt-3 col-sm-4" style="display:flex;flex-wrap:wrap;justify-content:space-between;border:solid 1px black">
-						<table>
-							<tr>
-								<th scope="col" class="btn btn-warning disabled btn-sm">{{ user.nom }}
-									{{ user.prenom }}</th>
-							</tr>
+						<div class="card mt-3 col-sm-4" style=" width:40%;border:solid 1px black">
+							<table>
+								<tr>
+									<th scope="col" class="btn btn-warning disabled btn-sm">{{ user.nom }}
+										{{ user.prenom }}</th>
+								</tr>
 
-							<tr>
-								<th scope="row">adresse mail</th>
-								<td style="text-align:right">{{ user.email }}</td>
+								<tr>
+									<th scope="row">adresse mail</th>
+									<td style="text-align:right">{{ user.email }}</td>
 
-							</tr>
+								</tr>
 
-							<tr>
-								<th scope="row">Role</th>
-								<td style="text-align:right">{{ user.roles[0] }}</td>
-							</tr>
+								<tr>
+									<th scope="row">Role</th>
+									<td style="text-align:right">{{ user.roles[0] }}</td>
+								</tr>
 
-							<tr>
-								<th>
-									<a href="{{ path('admin_change_role',{'id': user.id}) }}" class="btn btn-danger btn-sm">changer Role</th>
-								</th>
-							</tr>
-							<tr>
-								<th>
-									<a href="{{ path('admin_delete_user',{'id': user.id}) }}" class="btn btn-danger btn-sm">Supprimer Utilisateur</th>
-								</th>
-							</tr>
-						</table>
-					</div>
-				{% endfor %}
+								<tr>
+									<th>
+										<a href="{{ path('admin_change_role',{'id': user.id}) }}" class="btn btn-danger btn-sm">changer Role</th>
+									</th>
+								</tr>
+								<tr>
+									<th>
+										<a href="{{ path('admin_delete_user',{'id': user.id}) }}" class="btn btn-danger btn-sm">Supprimer Utilisateur</th>
+									</th>
+								</tr>
+							</table>
+						</div>
 
-				{# {{ knp_pagination_render(users) }} #}
-
-
-			{% else %}
-				<p>Aucun Utilisateur inscrit!</p>
-			{% endif %}
+					{% endfor %}
 
 
+				{% else %}
+					<p>Aucun Utilisateur inscrit!</p>
+				{% endif %}
+
+			</div>
+			{{ knp_pagination_render(users) }}
 		</div>
 	</body>
 {% endblock %}

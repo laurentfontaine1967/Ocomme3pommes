@@ -17,12 +17,12 @@ class AdminUserController extends AbstractController
      *@Route("/admin/users", name="admin_user")
      *@IsGranted("ROLE_ADMIN")
      */
-    public function adminShowUser(Request $request, PaginatorInterface $paginatorInterface, UserRepository $userRepository): Response
+    public function adminShowUser(Request $request, PaginatorInterface $paginator, UserRepository $userRepository): Response
     {
 
         $data = $userRepository->findAll();
 
-        $users = $paginatorInterface->paginate(
+        $users = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
             5
