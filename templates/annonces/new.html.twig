@@ -5,8 +5,11 @@
 
 {% block body %}
 	<body style="height:95vh">
-		<div class="container mt-3" style="height:85%">
+		<div class="container mt-3" style="height:90%">
 			<h5>Ajouter un nouvel évènement</h5>
+			<div>
+				{% include "public/shared/_messages_flash.html.twig" %}
+			</div>
 
 			{{ include('annonces/_form.html.twig') }}
 

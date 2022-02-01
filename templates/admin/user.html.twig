@@ -4,62 +4,41 @@
 {% endblock %}
 
 {% block body %}
+	<link rel="stylesheet" href="{{ asset('css/user.css') }}">
 	<body style="height:95vh">
-		<div class="container mt-5" style="height:100%;background-color:grey">
+		<div id="adjust" class="container mt-5" style="height:90%">
 
 			<div>
 				{% include "public/shared/_messages_flash.html.twig" %}
 			</div>
 			<a href="{{ path('admin/admin_home') }}" class="btn btn-primary btn-sm mb-4">Retour au menu administrateur</a>
 			<h3>Liste des Utilisateurs</h3>
-
-
-			{% if users | length > 0 %}
-
-				{{ knp_pagination_render(users) }}
-				<div style="height:80%;background-color:yellow;display:flex;flex-wrap:wrap;justify-content:space-between">
-					{% for user in users %}
-
-						<div class="card mt-3 col-sm-4" style=" width:40%;border:solid 1px black">
-							<table>
-								<tr>
-									<th scope="col" class="btn btn-warning disabled btn-sm">{{ user.nom }}
-										{{ user.prenom }}</th>
-								</tr>
-
-								<tr>
-									<th scope="row">adresse mail</th>
-									<td style="text-align:right">{{ user.email }}</td>
-
-								</tr>
-
-								<tr>
-									<th scope="row">Role</th>
-									<td style="text-align:right">{{ user.roles[0] }}</td>
-								</tr>
-
-								<tr>
-									<th>
-										<a href="{{ path('admin_change_role',{'id': user.id}) }}" class="btn btn-danger btn-sm">changer Role</th>
-									</th>
-								</tr>
-								<tr>
-									<th>
-										<a href="{{ path('admin_delete_user',{'id': user.id}) }}" class="btn btn-danger btn-sm">Supprimer Utilisateur</th>
-									</th>
-								</tr>
-							</table>
-						</div>
-
-					{% endfor %}
-
-
-				{% else %}
-					<p>Aucun Utilisateur inscrit!</p>
-				{% endif %}
-
-			</div>
 			{{ knp_pagination_render(users) }}
+			<div class="col">
+
+				{% if users | length > 0 %}
+
+					<div class="row">
+						{% for user in users %}
+
+							<div class="card-body col-md-4 mt-1">
+								<h6 class="card-title">{{ user.nom }}
+									{{ user.prenom }}</h6>
+								<p class="card-text">{{ user.email }}</p>
+								<p class="card-text">Role:{{ user.roles[0] }}</p>
+								<a href="{{ path('admin_change_role',{'id': user.id}) }}" class="btn btn-warning btn-sm" style="p-1">changer Role</a>
+								<a href="{{ path('admin_delete_user',{'id': user.id}) }}" class="btn btn-danger btn-sm" style="p-1">Supprimer Utilisateur</a>
+							</div>
+
+						{% endfor %}
+
+
+					{% else %}
+						<p>Aucun Utilisateur inscrit!</p>
+
+					{% endif %}
+				</div>
+			</div>
 		</div>
 	</body>
 {% endblock %}

@@ -13,7 +13,7 @@ class AdminChangeRoleController extends AbstractController
 {
 
     /**
-     *@Route("/admin/users/{id}", name="admin_change_role")
+     *@Route("/admin/users_role/{id}", name="admin_change_role")
      *@IsGranted("ROLE_ADMIN")
      */
     public function ChangeRole(int $id, UserRepository $userRepository, EntityManagerInterface $em):Response

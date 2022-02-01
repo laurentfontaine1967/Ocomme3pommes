@@ -40,6 +40,14 @@ class AnnoncesController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
         //gestion images
          $images=$form->get('images')->getData();
+         $nbre=count($images);
+         
+         if ($nbre > 8 ){
+            $this->addFlash('danger', 'Maximun 8 images');
+            return $this->redirectToRoute('annonces_new');   
+
+         }
+         
          foreach ($images as $image) {
          $fichier=md5(uniqid()).'.'.$image->guessExtension();
          $image->move(

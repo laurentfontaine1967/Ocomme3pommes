@@ -13,7 +13,7 @@ class AdminDeleteUserController extends AbstractController
 {
 
     /**
-     *@Route("/admin/users/{id}", name="admin_delete_user")
+     *@Route("/admin/users_delete/{id}", name="admin_delete_user")
      *@IsGranted("ROLE_ADMIN")
      */
     public function adminDeleteUser(int $id, UserRepository $userRepository, EntityManagerInterface $em): RedirectResponse

@@ -25,7 +25,7 @@ class AdminUserController extends AbstractController
         $users = $paginator->paginate(
             $data,
             $request->query->getInt('page', 1),
-            5
+            6
         );
 
 
